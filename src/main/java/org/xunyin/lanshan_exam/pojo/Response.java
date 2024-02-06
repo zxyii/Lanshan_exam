@@ -10,19 +10,19 @@ import javax.xml.transform.Result;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Response {
-    private Integer code; //1:成功 0：失败
+public class Response<T> {
+    private Integer code;
     private String message;
-    private Object data;
+    private T data;
 
     public static Response success(){
-        return new Response(1,"success",null);
+        return new Response(0,"success",null);
     }
-    public static Response success(Object data){
-        return new Response(1,"success",data);
+    public static <E> Response<E> success(E data){
+        return new Response<>(0,"success",data);
     }
     public static Response error(String message){
-        return new Response(0,message,null);
+        return new Response(1,message,null);
     }
 
 }

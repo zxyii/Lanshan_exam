@@ -24,6 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         } catch (Exception e) {
             Response.error("未登录");
+            response.setStatus(404);
             return false;
         }
     }

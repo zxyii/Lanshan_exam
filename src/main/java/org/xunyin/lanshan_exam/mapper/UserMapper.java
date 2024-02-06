@@ -13,10 +13,10 @@ public interface UserMapper {
     User findByName(String name);
 
     @Insert("INSERT INTO user(name,password)" +
-            "valuse(#{name},#{password})")
+            "VALUES (#{name},#{password})")
     void add(String name, String password);
 
-    @Update("UPDATE user SET name = #{name} where id = #{id}")
+    @Update("UPDATE user SET name = #{name},where id = #{id}")
     void update(User user);
 
     @Update(("UPDATE user SET image = #{ImageUrl} WHERE id = #{id}"))

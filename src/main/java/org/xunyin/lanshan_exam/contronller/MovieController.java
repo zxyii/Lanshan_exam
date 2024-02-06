@@ -21,7 +21,7 @@ import java.util.Objects;
 public class MovieController {
     @Autowired
     private MovieService movieService;
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public Response list(){
 
         log.info("查询所有电影");

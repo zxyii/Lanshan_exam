@@ -5,11 +5,14 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.xunyin.lanshan_exam.Utils.JwtUtil;
+import org.xunyin.lanshan_exam.Utils.Md5Util;
 import org.xunyin.lanshan_exam.Utils.ThteadLocalUtil;
 import org.xunyin.lanshan_exam.pojo.Response;
 import org.xunyin.lanshan_exam.pojo.User;
 import org.xunyin.lanshan_exam.service.UserService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -20,8 +23,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public Response register(@Pattern(regexp = "^\\s{5,16}$") String name,@Pattern(regexp = "^\\s{5,16}$")String password){
-        if(name !=null && password != null && password.length() >= 6) {
+    public Response register(String name,String password){
+
             User user = userService.findByName(name);
             if (user == null) {
                 userService.register(name, password);
@@ -30,10 +33,7 @@ public class UserController {
                 return Response.error("用户名已被占用");
             }
         }
-        else{
-            return Response.error("密码不规范");
-        }
-    }
+
 
     @PostMapping("/login")
     public Response login(String name, String password){
@@ -41,16 +41,19 @@ public class UserController {
         if(user == null){
             return Response.error("用户名错误或不存在");
         }
-        else if(password.equals(user.getPassword())){
-            return Response.success(user.getId() + user.getName());
-        }else{
-           return Response.error("密码错误");
+         if(password.equals(user.getPassword())){
+            Map<String, Object> claims = new HashMap<>();
+            claims.put("id",user.getId());
+            claims.put("name",user.getName());
+            String token = JwtUtil.genToken(claims);
+             return Response.success(token);
         }
+           return Response.error("密码错误");
     }
 
     @GetMapping("/details")
-    public Response userDetails(){
-        Map<String, Object> map = ThteadLocalUtil.get();
+    public Response<User> userDetails(@RequestHeader(name = "Authorization") String token){
+        Map<String, Object> map = JwtUtil.parseToken(token);
         String name = (String) map.get("name");
         User user = userService.findByName(name);
         return Response.success(user);
@@ -69,10 +72,13 @@ public class UserController {
     }
 
     @PatchMapping("/updateWord")
-    public Response updateWord(String newPassword){
-        userService.updateWord(newPassword);
+    public Response updateWord(@RequestBody Map<String, String> params){
+        String oldWord = params.get("old_word");
+        String newWord = params.get("new_word");
+        if(oldWord == null || newWord == null){
+            return Response.error("缺少数据");
+        }
+        userService.updateWord(newWord);
         return Response.success();
     }
-
-
 }
