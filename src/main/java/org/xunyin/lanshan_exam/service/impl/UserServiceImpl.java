@@ -2,6 +2,7 @@ package org.xunyin.lanshan_exam.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.xunyin.lanshan_exam.Utils.Md5Util;
 import org.xunyin.lanshan_exam.Utils.ThreadLocalUtil;
 import org.xunyin.lanshan_exam.mapper.UserMapper;
@@ -38,9 +39,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateWord(String newPassword) {
-        Map<String, Object> map = ThreadLocalUtil.get();
-        Integer id = (Integer) map.get("id");
+    public void updateWord(String newPassword,Integer id) {
+        /*Map<String, Object> map = ThreadLocalUtil.get();
+        Integer id = (Integer) map.get("id");*/
         userMapper.updateWord(newPassword,id);
     }
 }

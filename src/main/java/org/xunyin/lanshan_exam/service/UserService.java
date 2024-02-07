@@ -1,5 +1,6 @@
 package org.xunyin.lanshan_exam.service;
 
+import org.apache.ibatis.annotations.Insert;
 import org.xunyin.lanshan_exam.pojo.User;
 
 public interface UserService {
@@ -12,5 +13,5 @@ public interface UserService {
 
     void updateImage(String ImageUrl);
 
-    void updateWord(String newPassword);
+    void updateWord(String newPassword, Integer id);
 }
