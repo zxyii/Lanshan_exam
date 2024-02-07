@@ -5,21 +5,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.xunyin.lanshan_exam.mapper.MovieMapper">
 
-    <select id="searchByName" resultType="org.xunyin.lanshan_exam.pojo.Movie">
+<!--    <select id="searchByName" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select *
         from movie
         where
-        name like '%#{name}%'
-    </select>
-    <select id="searchByActor" resultType="org.xunyin.lanshan_exam.pojo.Movie">
+        name like ${name}
+    </select>-->
+   <!-- <select id="searchByActor" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select * from movie
         where
         actor = #{actor}
-    </select>
-    <select id="searchByScore" resultType="org.xunyin.lanshan_exam.pojo.Movie">
+    </select>-->
+<!--    <select id="searchByScore" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select * from movie
 
        order by score desc
 
-    </select>
+    </select>-->
 </mapper>
