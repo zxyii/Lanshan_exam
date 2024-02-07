@@ -3,7 +3,7 @@ package org.xunyin.lanshan_exam.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.xunyin.lanshan_exam.Utils.Md5Util;
+/*import org.xunyin.lanshan_exam.Utils.Md5Util;*/
 import org.xunyin.lanshan_exam.Utils.ThreadLocalUtil;
 import org.xunyin.lanshan_exam.mapper.UserMapper;
 import org.xunyin.lanshan_exam.pojo.User;
@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public void register(String name, String password) {
-        String md5String = Md5Util.getMD5String(password);
-        userMapper.add(name,md5String);
+
+        userMapper.add(name,password);
     }
 
     @Override

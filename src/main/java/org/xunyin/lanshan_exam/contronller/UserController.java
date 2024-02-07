@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public Response register(String name,String password){
+    public Response register(@RequestParam String name, @RequestParam String password){
 
             User user = userService.findByName(name);
             if (user == null) {

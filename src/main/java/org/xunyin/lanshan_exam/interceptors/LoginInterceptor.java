@@ -10,7 +10,6 @@ import org.xunyin.lanshan_exam.pojo.Response;
 
 import java.util.Map;
 
-/*
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -27,4 +26,3 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
     }
 }
-*/

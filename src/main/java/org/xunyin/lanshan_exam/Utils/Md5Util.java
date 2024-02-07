@@ -1,4 +1,4 @@
-package org.xunyin.lanshan_exam.Utils;
+/*package org.xunyin.lanshan_exam.Utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,4 +18,4 @@ public class Md5Util {
     public static String getMD5String(String s){
         return getMD5String(Arrays.toString(s.getBytes()));
     }
-}
+}*/
