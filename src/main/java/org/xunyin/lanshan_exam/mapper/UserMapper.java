@@ -20,7 +20,7 @@ public interface UserMapper {
     void update(User user);
 
     @Update(("UPDATE user SET image = #{ImageUrl} WHERE id = #{id}"))
-    void updateImage(String ImageUrl, Integer id);
+    void updateImage(String ImageUrl);
 
    @Update("UPDATE user SET password = #{newPassword} WHERE id = #{id}")
     void updateWord(String newPassword, Integer id);

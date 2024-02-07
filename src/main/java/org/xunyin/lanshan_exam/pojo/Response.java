@@ -13,7 +13,7 @@ import javax.xml.transform.Result;
 public class Response<T> {
     private Integer code;
     private String message;
-    private T data;
+    private T data; //响应数据
 
     public static Response success(){
         return new Response(0,"success",null);

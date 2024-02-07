@@ -73,9 +73,6 @@ public class UserController {
         String oldWord = params.get("old_word");
         String newWord = params.get("new_word");
         Integer id = Integer.valueOf(params.get("id"));
-        if(oldWord == null || newWord == null){
-            return Response.error("缺少数据");
-        }
         userService.updateWord(newWord,id);
         return Response.success();
     }

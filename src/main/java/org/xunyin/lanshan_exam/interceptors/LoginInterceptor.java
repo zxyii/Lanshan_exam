@@ -5,7 +5,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.xunyin.lanshan_exam.Utils.JwtUtil;
-import org.xunyin.lanshan_exam.Utils.ThreadLocalUtil;
 import org.xunyin.lanshan_exam.pojo.Response;
 
 import java.util.Map;
@@ -17,11 +16,10 @@ public class LoginInterceptor implements HandlerInterceptor {
       String token = request.getHeader("Authorization");
         try {
             Map<String, Object> claims = JwtUtil.parseToken(token);
-            ThreadLocalUtil.set(claims);
             return true;
         } catch (Exception e) {
             Response.error("未登录");
-            response.setStatus(404);
+            response.setStatus(401);
             return false;
         }
     }
