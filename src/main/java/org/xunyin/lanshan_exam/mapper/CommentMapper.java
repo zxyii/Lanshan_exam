@@ -9,9 +9,9 @@ import java.util.List;
 
 @Mapper
 public interface CommentMapper {
-   @Select("SELECT content FROM comment")
+   @Select("SELECT content FROM comment WHERE movie_name = #{name}")
     public List<Comment> commentList(String name);
-    @Select("SELECT score FROM comment WHERE movie_name = #{name}")
+    @Select("SELECT AVG(score) FROM comment WHERE movie_name = #{name}")
     public double selectScore(String name);
 
    @Insert("INSERT INTO comment(movie_name,user_id,user_name,content,score)" +

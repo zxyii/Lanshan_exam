@@ -8,26 +8,18 @@
     <select id="searchByName" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select *
         from movie
-        <where>
-            <if test="name != null">
-        name like contact(#{name})
-        </if>
-        </where>
+        where
+        name like '%#{name}%'
     </select>
     <select id="searchByActor" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select * from movie
-        <where>
-        <if test="actor != null">
-        actor like contact(#{actor})
-        </if>
-        </where>
+        where
+        actor = #{actor}
     </select>
     <select id="searchByScore" resultType="org.xunyin.lanshan_exam.pojo.Movie">
         select * from movie
-        <where>
-        <if test="score != null">
-          order by score desc
-        </if>
-        </where>
+
+       order by score desc
+
     </select>
 </mapper>

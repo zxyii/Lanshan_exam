@@ -16,7 +16,7 @@ public interface UserMapper {
             "VALUES (#{name},#{password})")
     void add(String name, String password);
 
-    @Update("UPDATE user SET name = #{name},where id = #{id}")
+    @Update("UPDATE user SET name = #{name} WHERE id = #{id}")
     void update(User user);
 
     @Update(("UPDATE user SET image = #{ImageUrl} WHERE id = #{id}"))

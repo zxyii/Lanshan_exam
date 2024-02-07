@@ -1,13 +1,10 @@
 package org.xunyin.lanshan_exam.contronller;
 
-import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.xunyin.lanshan_exam.Utils.JwtUtil;
-import org.xunyin.lanshan_exam.Utils.Md5Util;
-import org.xunyin.lanshan_exam.Utils.ThteadLocalUtil;
 import org.xunyin.lanshan_exam.pojo.Response;
 import org.xunyin.lanshan_exam.pojo.User;
 import org.xunyin.lanshan_exam.service.UserService;

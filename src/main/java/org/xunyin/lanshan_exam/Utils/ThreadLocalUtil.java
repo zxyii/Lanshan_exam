@@ -1,6 +1,6 @@
 package org.xunyin.lanshan_exam.Utils;
 
-public class ThteadLocalUtil {
+public class ThreadLocalUtil {
     private static final ThreadLocal THREAD_LOCAL = new ThreadLocal<>();
 
     public static <T> T get(){

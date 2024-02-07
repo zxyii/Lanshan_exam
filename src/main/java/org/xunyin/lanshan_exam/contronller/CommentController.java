@@ -19,14 +19,14 @@ public class CommentController {
     public Response commentList(String name){
         log.info("电影评论");
         List<Comment> commentList = commentService.commentList(name);
-        return Response.success();
+        return Response.success(commentList);
     }
 
     @GetMapping("/scoreOfMovie")
     public Response score(String name){
         log.info("电影评分");
         double score = commentService.selectScore(name);
-        return Response.success();
+        return Response.success(score);
     }
 
     @PostMapping("/add")

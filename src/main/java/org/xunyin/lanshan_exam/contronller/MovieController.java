@@ -26,27 +26,27 @@ public class MovieController {
 
         log.info("查询所有电影");
         List<Movie> movieList = movieService.movieList();
-        return Response.success("所有电影数据如下：");
+        return Response.success(movieList);
     }
 
     @GetMapping("/nameOfMovie")
     public Response searchByname(String name){
         log.info("根据关键字查询电影");
         List<Movie> moveOfName = movieService.searchByName(name);
-        return Response.success();
+        return Response.success(moveOfName);
     }
 
     @GetMapping("actorOfMovie")
     public Response searchByActor(String actor){
         log.info("根据演员查询电影");
         List<Movie> movieOfActor = movieService.searchByActor(actor);
-        return Response.success();
+        return Response.success(movieOfActor);
     }
     @GetMapping("/rank")
     public Response searchByScore(){
         log.info("按评分降序查询");
         List<Movie> movieOfScore = movieService.searchByScore();
-        return Response.success();
+        return Response.success(movieOfScore);
     }
 
 }
